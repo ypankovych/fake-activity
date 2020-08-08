@@ -6,14 +6,15 @@ from git import Repo
 
 MAX_COMMITS_COUNT = 10
 DIR_PATH = os.path.dirname(__file__)
+README = os.path.join(DIR_PATH, "README.md")
 repo = Repo(DIR_PATH)
 
 
 def update_readme():
     last_commit_time = datetime.now(tz=timezone.utc)
-    with open("README.md", "w") as fp:
+    with open(README, "w") as fp:
         fp.write(f"# Last commit: {last_commit_time}")
-    repo.git.add([os.path.join(DIR_PATH, "README.md")], update=True)
+    repo.git.add([README], update=True)
 
 
 def main():
