@@ -6,5 +6,5 @@ repo = Repo(os.path.dirname(__file__))
 index = repo.index
 
 index.commit("test")
-index.add("main.py")
+repo.git.add("main.py")
 repo.remote().push("master:master")
