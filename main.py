@@ -5,14 +5,15 @@ from datetime import datetime, timezone
 from git import Repo
 
 MAX_COMMITS_COUNT = 10
-repo = Repo(os.path.dirname(__file__))
+DIR_PATH = os.path.dirname(__file__)
+repo = Repo(DIR_PATH)
 
 
 def update_readme():
     last_commit_time = datetime.now(tz=timezone.utc)
     with open("README.md", "w") as fp:
         fp.write(f"# Last commit: {last_commit_time}")
-    repo.index.add(["README.md"])
+    repo.index.add([os.path.join(DIR_PATH, "README.md")])
 
 
 def main():
