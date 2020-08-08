@@ -13,7 +13,7 @@ def update_readme():
     last_commit_time = datetime.now(tz=timezone.utc)
     with open("README.md", "w") as fp:
         fp.write(f"# Last commit: {last_commit_time}")
-    index.add("README.md")
+    repo.git.add("README.md")
 
 
 def main():
